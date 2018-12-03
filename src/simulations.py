@@ -1,4 +1,5 @@
 from simulations.Poisson import Poisson
+from simulations.Gamma import Gamma
 import sys
 
 
@@ -19,6 +20,10 @@ if(distribucion == "poisson" or distribucion == "Posisson"):
     poisson = Poisson(lmbda,noMuestras)
     poisson.presentaMuestras()
     poisson.grafica()
-
-
+elif(distribucion == "gamma" or distribucion == "Gamma"):
+    n = float(input("Inserte el parámetro n: "))
+    lmbda = float(input("Inserte el parámetro λ: "))
+    gamma = Gamma(n,lmbda,noMuestras)
+    gamma.presentaMuestras()
+    gamma.grafica()
     

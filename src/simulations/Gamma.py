@@ -1,23 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.special as sps
 
-
-class Poisson:
-    def __init__(self, lmbda, noMuestras):
+class Gamma:
+    def __init__(self,n,lmbda,noMuestras):
+        self.n = n
         self.lmbda = lmbda
         self.noMuestras = noMuestras
         self.muestras = self.simula()
     
-    """
-    Method --simula()
-    Método para crear las muestras a simular.
-    """
     def simula(self):
-        return np.random.poisson(self.lmbda,self.noMuestras)
-    """
-    Method -- presentaMuestras()
-    Método para mejorar la representación de cadena del arreglo de muestras.
-    """
+        return np.random.gamma(self.n,self.lmbda,self.noMuestras)
+    
     def presentaMuestras(self):
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
@@ -35,12 +29,7 @@ class Poisson:
                     s = s + str(self.muestras[i]) + ", "
                     j += 1
         print(s)
-
-    """
-    Method -- grafica()
-    Método para graficar las muestras, haciendo uso del módulo matplotlib de python.
-    """
+    
     def grafica(self):
         plt.hist(self.muestras)
         plt.show()
-
