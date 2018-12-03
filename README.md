@@ -14,11 +14,13 @@ Proyecto de simulaciones de alguanas funciones de distribución, como:
 # Bibliotecas de Python: 
 * matplotlib
 * numpy
+* seaborn
 
 # Como se instalan:
 ```bash
 $ python3 -m pip install numpy
 $ python3 -m pip install matplotlib
+$ python3 -m pip install seaborn
 ```
 
 # Como se ejecuta cada programa:
