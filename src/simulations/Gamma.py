@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.special as sps
+import seaborn as sns
 
 class Gamma:
     def __init__(self,n,lmbda,noMuestras):
@@ -31,5 +31,10 @@ class Gamma:
         print(s)
     
     def grafica(self):
-        plt.hist(self.muestras)
+        ax = sns.distplot(self.muestras,
+                  kde=True,
+                  bins=100,
+                  color='skyblue',
+                  hist_kws={"linewidth": 15,'alpha':1})
+        ax.set(xlabel='Gamma Distribution', ylabel='Frequency')
         plt.show()

@@ -2,23 +2,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-class Poisson:
-    def __init__(self, lmbda, noMuestras):
-        self.lmbda = lmbda
+class BinNegative:
+    def __init__(self,n,p,noMuestras):
+        self.n = n
+        self.p = p
         self.noMuestras = noMuestras
         self.muestras = self.simula()
     
-    """
-    Method --simula()
-    Método para crear las muestras a simular.
-    """
     def simula(self):
-        return np.random.poisson(self.lmbda,self.noMuestras)
-    """
-    Method -- presentaMuestras()
-    Método para mejorar la representación de cadena del arreglo de muestras.
-    """
+        return np.random.negative_binomial(self.n,self.p,self.noMuestras)
+    
     def presentaMuestras(self):
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
@@ -36,17 +29,12 @@ class Poisson:
                     s = s + str(self.muestras[i]) + ", "
                     j += 1
         print(s)
-
-    """
-    Method -- grafica()
-    Método para graficar las muestras, haciendo uso del módulo matplotlib de python.
-    """
+    
     def grafica(self):
         ax = sns.distplot(self.muestras,
-                  kde=True,
                   bins=100,
+                  kde = False,
                   color='skyblue',
                   hist_kws={"linewidth": 15,'alpha':1})
-        ax.set(xlabel='Poisson Distribution', ylabel='Frequency')
+        ax.set(xlabel='BinNegative Distribution', ylabel='Frequency')
         plt.show()
-
