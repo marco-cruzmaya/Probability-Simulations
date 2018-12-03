@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 ./src/simulations/simulations.py ${1}
+python3 ./src/simulations.py ${1} ${2}
