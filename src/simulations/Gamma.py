@@ -21,7 +21,7 @@ class Gamma:
         x = 0
         for i in range(0,self.n):
             u = random.uniform(0,1)
-            exp = (-1*(1/1))*(math.log(1-u))
+            exp = math.pow(-1*self.lmbda,-1)*(math.log(1-u))
             x = x + exp
         return x
     

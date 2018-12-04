@@ -7,9 +7,9 @@ import random
 
 def hiperGeometric(i,n,N,m):
     comb1 = (math.factorial(m))/((math.factorial(m-i))*math.factorial(i))
-    comb2 = (math.factorial(N-m))/((math.factorial((N-m)-(n-1)))*math.factorial(n-1))
+    comb2 = (math.factorial(N-m))/((math.factorial((N-m)-(n-i)))*math.factorial(n-i))
     comb3 = (math.factorial(N))/((math.factorial(N-n))*math.factorial(n))
-    return comb1*comb2/comb3
+    return (comb1*comb2)/comb3
 
 class HyperGeometric:
     def __init__(self,size,N,m,noMuestras):
@@ -26,7 +26,7 @@ class HyperGeometric:
             i = 0
             p = hiperGeometric(i,self.size,self.N,self.m)
             F = p
-            while(i < min(self.size,self.m)):
+            while(i < self.size):
                 if u < F:
                     muestras[j] = i
                     break
@@ -56,7 +56,7 @@ class HyperGeometric:
     def grafica(self):
         ax = sns.distplot(self.muestras,
                   bins=100,
-                  kde = True,
+                  kde = False,
                   color='skyblue',
                   hist_kws={"linewidth": 15,'alpha':1})
         ax.set(xlabel='BinNegative Distribution', ylabel='Frequency')
