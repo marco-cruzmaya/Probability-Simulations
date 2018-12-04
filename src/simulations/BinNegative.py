@@ -1,16 +1,27 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from simulations.Poisson import Poisson
+from simulations.Gamma import Gamma
+
+
 
 class BinNegative:
-    def __init__(self,n,p,noMuestras):
-        self.n = n
+    def __init__(self,r,p,noMuestras):
+        self.r = r
         self.p = p
         self.noMuestras = noMuestras
         self.muestras = self.simula()
     
     def simula(self):
-        return np.random.negative_binomial(self.n,self.p,self.noMuestras)
+        muestra = [0]*self.noMuestras
+        lmbda = (1-self.p)/self.p
+        gamma = Gamma(self.r,lmbda,self.noMuestras)
+        for k in range(0,self.noMuestras):
+            y = gamma.gamma()
+            poisson = Poisson(y,self.noMuestras)
+            muestra[k] = poisson.poisson()
+        return muestra
     
     def presentaMuestras(self):
         n = len(self.muestras) #longitud del arreglo

@@ -1,18 +1,32 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import random
+import math
 
 class Gamma:
     def __init__(self,n,lmbda,noMuestras):
         self.n = n
         self.lmbda = lmbda
         self.noMuestras = noMuestras
-        self.muestras = self.simula()
+        self.muestras = [0]*noMuestras
     
     def simula(self):
-        return np.random.gamma(self.n,self.lmbda,self.noMuestras)
+        muestras = [0]*self.noMuestras
+        for j in range(0,self.noMuestras):
+            muestras[j] = self.gamma()
+        return muestras
+    
+    def gamma(self):
+        x = 0
+        for i in range(0,self.n):
+            u = random.uniform(0,1)
+            exp = (-1*(1/1))*(math.log(1-u))
+            x = x + exp
+        return x
     
     def presentaMuestras(self):
+        self.muestras = self.simula()
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
         j = 0

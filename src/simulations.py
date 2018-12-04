@@ -3,6 +3,7 @@ from simulations.Gamma import Gamma
 from simulations.BinNegative import BinNegative
 from simulations.HyperGeometric import HyperGeometric
 import sys
+import math
 
 
 uso = "uso -- simulations.py [Nombre de la distribución] [No. Muestras]"
@@ -23,15 +24,24 @@ if(distribucion == "poisson" or distribucion == "Posisson"):
     poisson.presentaMuestras()
     poisson.grafica()
 elif(distribucion == "gamma" or distribucion == "Gamma"):
-    n = float(input("Inserte el parámetro n: "))
-    lmbda = float(input("Inserte el parámetro λ: "))
+    while(True):
+        n = float(input("Inserte el parámetro n: "))
+        n = math.floor(n)
+        if n > 0:
+            break
+        print("n debe de ser mayor a 0.")
+    while(True):
+        lmbda = float(input("Inserte el parámetro λ: "))
+        if lmbda >= 0:
+            break
+        print("λ debe de ser mayor a 0.")
     gamma = Gamma(n,lmbda,noMuestras)
     gamma.presentaMuestras()
     gamma.grafica()
 elif(distribucion == "binNegative" or distribucion == "BinNegative" or 
             distribucion == "BinNeg"):
     while(True):
-        n = float(input("Inserte el parámetro n: "))
+        n = int(input("Inserte el parámetro n: "))
         if n >= 0:
             break
         print("n debe de ser mayor o igual a 0.")
@@ -44,9 +54,9 @@ elif(distribucion == "binNegative" or distribucion == "BinNegative" or
     binNegativa.presentaMuestras()
     binNegativa.grafica()
 elif(distribucion == "HiperGeo" or distribucion == "HiperGeometrica"):
-    Ngood = float(input("Inserte el parámetro N: "))
-    m = float(input("Inserte el parámetro m: "))
-    n = float(input("Inserte el parámetro n: "))
-    hiperGeo = HyperGeometric(Ngood,m,n,noMuestras)
+    n = int(input("Inserte el parámetro de tamaño de la muestra: "))
+    N = int(input("Inserte el parámetro N: "))
+    m = int(input("Inserte el parámetro m: "))
+    hiperGeo = HyperGeometric(n,N,m,noMuestras)
     hiperGeo.presentaMuestras()
     hiperGeo.grafica()

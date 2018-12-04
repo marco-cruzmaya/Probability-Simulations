@@ -1,25 +1,46 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import random
+import math
 
 
 class Poisson:
     def __init__(self, lmbda, noMuestras):
         self.lmbda = lmbda
         self.noMuestras = noMuestras
-        self.muestras = self.simula()
+        self.muestras = [0]*noMuestras
     
     """
     Method --simula()
     Método para crear las muestras a simular.
     """
     def simula(self):
-        return np.random.poisson(self.lmbda,self.noMuestras)
+        muestras = [0]*self.noMuestras
+        for j in range(0,self.noMuestras):
+            muestras[j] = self.poisson()
+        return muestras
+    
+    def poisson(self):
+        x = 0
+        u = random.uniform(0,1)
+        p = math.exp(-1*self.lmbda)
+        F = p
+        i = 0
+        while(True):
+            if u < F:
+                x = i
+                break
+            i += 1
+            p = (self.lmbda*p)/(i)
+            F = F + p
+        return x
     """
     Method -- presentaMuestras()
     Método para mejorar la representación de cadena del arreglo de muestras.
     """
     def presentaMuestras(self):
+        self.muestras = self.simula()
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
         j = 0
@@ -42,11 +63,12 @@ class Poisson:
     Método para graficar las muestras, haciendo uso del módulo matplotlib de python.
     """
     def grafica(self):
-        ax = sns.distplot(self.muestras,
-                  kde=True,
-                  bins=100,
-                  color='skyblue',
-                  hist_kws={"linewidth": 15,'alpha':1})
-        ax.set(xlabel='Poisson Distribution', ylabel='Frequency')
-        plt.show()
+        if len(self.muestras) > 1:
+            ax = sns.distplot(self.muestras,
+                    kde=True,
+                    bins=100,
+                    color='skyblue',
+                    hist_kws={"linewidth": 15,'alpha':1})
+            ax.set(xlabel='Poisson Distribution', ylabel='Frequency')
+            plt.show()
 
