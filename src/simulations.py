@@ -4,6 +4,8 @@ from simulations.BinNegative import BinNegative
 from simulations.HyperGeometric import HyperGeometric
 import sys
 import math
+
+
 def size(muestras):
     size = 0
     n = len(muestras)
@@ -27,7 +29,7 @@ if(distribucion == "poisson" or distribucion == "Posisson"):
         print("λ debe de ser mayor a 0.")
     poisson = Poisson(lmbda,noMuestras)
     poisson.presentaMuestras()
-    print("  Media de la muestra: %f" % size(poisson.muestras))
+    print("  Media de la muestra: %.4f" % size(poisson.muestras))
     poisson.grafica()
 elif(distribucion == "gamma" or distribucion == "Gamma"):
     while(True):
@@ -43,7 +45,7 @@ elif(distribucion == "gamma" or distribucion == "Gamma"):
         print("λ debe de ser mayor a 0.")
     gamma = Gamma(n,lmbda,noMuestras)
     gamma.presentaMuestras()
-    print("  Media de la muestra: %f" % size(gamma.muestras))
+    print("  Media de la muestra: %.4f" % size(gamma.muestras))
     gamma.grafica()
 elif(distribucion == "binNegative" or distribucion == "BinNegative" or 
             distribucion == "BinNeg"):
@@ -59,7 +61,7 @@ elif(distribucion == "binNegative" or distribucion == "BinNegative" or
         print("p debe de ser menor o igual a 1 o mayor o igual a 0.")
     binNegativa = BinNegative(n,p,noMuestras)
     binNegativa.presentaMuestras()
-    print("  Media de la muestra: %f" % size(binNegativa.muestras))
+    print("  Media de la muestra: %.4f" % size(binNegativa.muestras))
     binNegativa.grafica()
 elif(distribucion == "HiperGeo" or distribucion == "HiperGeometrica"):
     n = int(input("Inserte el parámetro de tamaño de la muestra: "))
@@ -67,5 +69,5 @@ elif(distribucion == "HiperGeo" or distribucion == "HiperGeometrica"):
     m = int(input("Inserte el parámetro m: "))
     hiperGeo = HyperGeometric(n,N,m,noMuestras)
     hiperGeo.presentaMuestras()
-    print("  Media de la muestra: %f" % size(hiperGeo.muestras))
+    print("  Media de la muestra: %.4f" % size(hiperGeo.muestras))
     hiperGeo.grafica()

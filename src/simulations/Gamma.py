@@ -34,13 +34,13 @@ class Gamma:
             return s + "]"
         for i in range(0,n):
             if i == n-1:
-                s = s + str(self.muestras[i]) + " ]"
+                s = s + str.format("%.2f" % self.muestras[i]) + " ]"
             else:
                 if j == 15:
-                    s = s + str(self.muestras[i]) + ", \n  "
+                    s = s + str.format("%.2f" % self.muestras[i]) + ", \n  "
                     j = 0
                 else:
-                    s = s + str(self.muestras[i]) + ", "
+                    s = s + str.format("%.2f" % self.muestras[i]) + ", "
                     j += 1
         print(s)
     
