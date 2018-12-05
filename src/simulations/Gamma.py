@@ -5,8 +5,8 @@ import random
 import math
 
 class Gamma:
-    def __init__(self,n,lmbda,noMuestras):
-        self.n = n
+    def __init__(self,r,lmbda,noMuestras):
+        self.r = r
         self.lmbda = lmbda
         self.noMuestras = noMuestras
         self.muestras = [0]*noMuestras
@@ -31,7 +31,7 @@ class Gamma:
 
     def gamma(self):
         x = 0
-        for i in range(0,self.n):
+        for i in range(0,self.r):
             u = random.uniform(0,1)
             exp = math.pow(-1*self.lmbda,-1)*(math.log(1-u))
             x = x + exp
