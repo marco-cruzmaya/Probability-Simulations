@@ -21,6 +21,12 @@ class Poisson:
             muestras[j] = self.poisson()
         return muestras
     
+    """
+    Method (auxiliar) -- poisson()
+    @return x: Dondé X es una variable aleatoria que se distribuye Poisson.
+    Método auxiliar para crear una una variable aleatoria que se destribuye Poisson.
+    """
+
     def poisson(self):
         x = 0
         u = random.uniform(0,1)
@@ -60,7 +66,7 @@ class Poisson:
 
     """
     Method -- grafica()
-    Método para graficar las muestras, haciendo uso del módulo matplotlib de python.
+    Método para graficar las muestras, haciendo uso del módulo seaborn de python.
     """
     def grafica(self):
         if len(self.muestras) > 1:

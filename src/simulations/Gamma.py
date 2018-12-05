@@ -11,12 +11,24 @@ class Gamma:
         self.noMuestras = noMuestras
         self.muestras = [0]*noMuestras
     
+    """
+    Method --simula()
+    Método para crear las muestras a simular.
+    """
+
     def simula(self):
         muestras = [0]*self.noMuestras
         for j in range(0,self.noMuestras):
             muestras[j] = self.gamma()
         return muestras
     
+    """
+    Method(auxiliar) -- gamma()
+    @return X: Dondé X es una variable aleatoria que se distribuye Gamma.
+    Método auxliar para crear una variable aleatoria que se destribuye Gamma con
+    párametros n, lamda.
+    """
+
     def gamma(self):
         x = 0
         for i in range(0,self.n):
@@ -25,6 +37,11 @@ class Gamma:
             x = x + exp
         return x
     
+    """
+    Method -- presentaMuestras()
+    Método para mejorar la representación de cadena del arreglo de muestras.
+    """
+
     def presentaMuestras(self):
         self.muestras = self.simula()
         n = len(self.muestras) #longitud del arreglo
@@ -44,6 +61,11 @@ class Gamma:
                     j += 1
         print(s)
     
+    """
+    Method -- grafica()
+    Método para graficar las muestras, haciendo uso del módulo seaborn de python.
+    """
+
     def grafica(self):
         ax = sns.distplot(self.muestras,
                   kde=True,

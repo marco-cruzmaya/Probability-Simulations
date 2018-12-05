@@ -13,6 +13,11 @@ class BinNegative:
         self.noMuestras = noMuestras
         self.muestras = self.simula()
     
+    """
+    Method --simula()
+    Método para crear las muestras a simular.
+    """
+
     def simula(self):
         muestra = [0]*self.noMuestras
         lmbda = (1-self.p)/self.p
@@ -23,6 +28,11 @@ class BinNegative:
             muestra[k] = poisson.poisson()
         return muestra
     
+    """
+    Method -- presentaMuestras()
+    Método para mejorar la representación de cadena del arreglo de muestras.
+    """
+
     def presentaMuestras(self):
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
@@ -41,6 +51,11 @@ class BinNegative:
                     j += 1
         print(s)
     
+    """
+    Method -- grafica()
+    Método para graficar las muestras, haciendo uso del módulo seaborn de python.
+    """
+
     def grafica(self):
         ax = sns.distplot(self.muestras,
                   bins=100,

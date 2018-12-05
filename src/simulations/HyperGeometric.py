@@ -5,11 +5,19 @@ import math
 import random
 
 
+"""
+Function -- hiperGeometric.
+@return p: La probabilidad de que X=i, dodne X es una variable aleatoria que distribuye
+HiperGeometrica.
+Función que regresa la probabilidad de que X=i, com X una variable aleatoria que distribuye
+HiperGeometrica.
+"""
 def hiperGeometric(i,n,N,m):
     comb1 = (math.factorial(m))/((math.factorial(m-i))*math.factorial(i))
     comb2 = (math.factorial(N-m))/((math.factorial((N-m)-(n-i)))*math.factorial(n-i))
     comb3 = (math.factorial(N))/((math.factorial(N-n))*math.factorial(n))
-    return (comb1*comb2)/comb3
+    p = (comb1*comb2)/comb3
+    return p
 
 class HyperGeometric:
     def __init__(self,size,N,m,noMuestras):
@@ -19,6 +27,11 @@ class HyperGeometric:
         self.noMuestras = noMuestras
         self.muestras = self.simula()
     
+    """
+    Method --simula()
+    Método para crear las muestras a simular.
+    """
+
     def simula(self):
         muestras = [0]*self.noMuestras
         for j in range(0,self.noMuestras):
@@ -35,6 +48,11 @@ class HyperGeometric:
                 F = F + p
         return muestras
     
+    """
+    Method -- presentaMuestras()
+    Método para mejorar la representación de cadena del arreglo de muestras.
+    """
+
     def presentaMuestras(self):
         n = len(self.muestras) #longitud del arreglo
         s = "[ "
@@ -53,6 +71,11 @@ class HyperGeometric:
                     j += 1
         print(s)
     
+    """
+    Method -- grafica()
+    Método para graficar las muestras, haciendo uso del módulo seaborn de python.
+    """
+
     def grafica(self):
         ax = sns.distplot(self.muestras,
                   bins=100,
