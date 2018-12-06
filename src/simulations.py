@@ -21,7 +21,7 @@ print("Para salir del programa presione Ctrl + c.")
 distribucion = sys.argv[1]
 noMuestras = int(sys.argv[2])
 
-if(distribucion == "poisson" or distribucion == "Posisson"):
+if(distribucion == "poisson" or distribucion == "Poisson"):
     while(True):
         lmbda = float(input("Inserte el parámetro λ: "))
         if lmbda >= 0:
